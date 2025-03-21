@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { DeleteConfirmation } from "./DeleteConfirmation";
+import { connectToDatabase } from "@/lib/database";
+import User from "@/lib/database/models/user.model";
 
 type CardProps = {
   event: IEvent;
@@ -15,7 +17,13 @@ type CardProps = {
 const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
   const { userId } = await auth();
 
-  const isEventCreator = (userId as string) === event.organizer._id.toString();
+  await connectToDatabase();
+  const user = await User.findOne({ clerkId: userId });
+
+  const isEventCreator =
+    user?._id.toString() === event.organizer._id.toString();
+
+  console.log(isEventCreator);
 
   return (
     <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
