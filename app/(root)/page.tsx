@@ -7,10 +7,16 @@ import { SearchParamProps } from "@/types";
 import { Link } from "lucide-react";
 import Image from "next/image";
 
-export default async function Home({ searchParams }: SearchParamProps) {
-  const page = Number(searchParams?.page) || 1;
-  const searchText = (searchParams?.query as string) || "";
-  const category = (searchParams?.category as string) || "";
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParamProps>;
+}) {
+  const { searchParams: query } = await searchParams;
+
+  const page = Number(query?.page) || 1;
+  const searchText = (query?.query as string) || "";
+  const category = (query?.category as string) || "";
 
   const events = await getAllEvents({
     query: searchText,

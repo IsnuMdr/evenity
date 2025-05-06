@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
         pathname: "/photo/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
     ],
   },
 };
