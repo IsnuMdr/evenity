@@ -10,14 +10,10 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import React from "react";
 
-const ProfilePage = async ({
-  searchParams,
-}: {
-  searchParams: Promise<SearchParamProps>;
-}) => {
+const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { userId } = await auth();
 
-  const { searchParams: query } = await searchParams;
+  const query = await searchParams;
 
   await connectToDatabase();
   const user = await User.findOne({ clerkId: userId });
