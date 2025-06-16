@@ -14,9 +14,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
   const { page, query, category } = await searchParams;
   const pageNumber = page ? parseInt(page as string, 10) : 1;
 
-  // Artificial delay for demonstration purposes
-  await new Promise((resolve) => setTimeout(resolve, 10000));
-
   const events = await getAllEvents({
     query: query?.toString() || "",
     category: category?.toString() || "",
