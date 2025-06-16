@@ -3,12 +3,16 @@ import { getOrdersByEvent } from "@/lib/actions/order.actions";
 import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import { IOrderItem } from "@/lib/database/models/order.model";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
-  const eventId = (searchParams?.eventId as string) || "";
-  const searchText = (searchParams?.query as string) || "";
+  const { eventId, query } = await searchParams;
 
-  const orders = await getOrdersByEvent({ eventId, searchString: searchText });
+  const orders = await getOrdersByEvent({
+    eventId: eventId?.toString() || "",
+    searchString: query?.toString() || "",
+  });
 
   return (
     <>
@@ -19,7 +23,6 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
       <section className="wrapper mt-8">
         <Search placeholder="Search buyer name..." />
       </section>
-
       <section className="wrapper overflow-x-auto">
         <table className="w-full border-collapse border-t">
           <thead>
@@ -34,38 +37,48 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
             </tr>
           </thead>
           <tbody>
-            {orders && orders.length === 0 ? (
-              <tr className="border-b">
-                <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No orders found.
-                </td>
-              </tr>
-            ) : (
-              <>
-                {orders &&
-                  orders.map((row: IOrderItem) => (
-                    <tr
-                      key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b "
-                      style={{ boxSizing: "border-box" }}
-                    >
-                      <td className="min-w-[250px] py-4 text-primary-500">
-                        {row._id}
-                      </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.eventTitle}
-                      </td>
-                      <td className="min-w-[150px] py-4">{row.buyer}</td>
-                      <td className="min-w-[100px] py-4">
-                        {formatDateTime(row.createdAt).dateTime}
-                      </td>
-                      <td className="min-w-[100px] py-4 text-right">
-                        {formatPrice(row.totalAmount)}
-                      </td>
-                    </tr>
-                  ))}
-              </>
-            )}
+            <Suspense
+              fallback={Array.from({ length: 5 }).map((_, index) => (
+                <tr key={index} className="border-b">
+                  <td colSpan={5} className="py-4">
+                    <Skeleton className="h-6 w-full" />
+                  </td>
+                </tr>
+              ))}
+            >
+              {orders && orders.length === 0 ? (
+                <tr className="border-b">
+                  <td colSpan={5} className="py-4 text-center text-gray-500">
+                    No orders found.
+                  </td>
+                </tr>
+              ) : (
+                <>
+                  {orders &&
+                    orders.map((row: IOrderItem) => (
+                      <tr
+                        key={row._id}
+                        className="p-regular-14 lg:p-regular-16 border-b "
+                        style={{ boxSizing: "border-box" }}
+                      >
+                        <td className="min-w-[250px] py-4 text-primary-500">
+                          {row._id}
+                        </td>
+                        <td className="min-w-[200px] flex-1 py-4 pr-4">
+                          {row.eventTitle}
+                        </td>
+                        <td className="min-w-[150px] py-4">{row.buyer}</td>
+                        <td className="min-w-[100px] py-4">
+                          {formatDateTime(row.createdAt).dateTime}
+                        </td>
+                        <td className="min-w-[100px] py-4 text-right">
+                          {formatPrice(row.totalAmount)}
+                        </td>
+                      </tr>
+                    ))}
+                </>
+              )}
+            </Suspense>
           </tbody>
         </table>
       </section>

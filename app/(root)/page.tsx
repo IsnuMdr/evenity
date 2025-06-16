@@ -1,15 +1,21 @@
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
+import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
 import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
 import { Link } from "lucide-react";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const { page, query, category } = await searchParams;
   const pageNumber = page ? parseInt(page as string, 10) : 1;
+
+  // Artificial delay for demonstration purposes
+  await new Promise((resolve) => setTimeout(resolve, 10000));
 
   const events = await getAllEvents({
     query: query?.toString() || "",
@@ -54,16 +60,17 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <Search />
           <CategoryFilter />
         </div>
-
-        <Collection
-          data={events?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubtext="Come back later"
-          collectionType="All_Events"
-          limit={6}
-          page={pageNumber}
-          totalPages={events?.totalPages}
-        />
+        <Suspense fallback={<EventsSkeleton />}>
+          <Collection
+            data={events?.data}
+            emptyTitle="No Events Found"
+            emptyStateSubtext="Come back later"
+            collectionType="All_Events"
+            limit={6}
+            page={pageNumber}
+            totalPages={events?.totalPages}
+          />
+        </Suspense>
       </section>
     </>
   );

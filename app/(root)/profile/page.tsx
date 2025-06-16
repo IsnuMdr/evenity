@@ -1,4 +1,5 @@
 import Collection from "@/components/shared/Collection";
+import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
 import { Button } from "@/components/ui/button";
 import { getEventsByUser } from "@/lib/actions/event.actions";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
@@ -8,7 +9,7 @@ import User from "@/lib/database/models/user.model";
 import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { userId } = await auth();
@@ -45,16 +46,18 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-8">
-        <Collection
-          data={orderedEvents}
-          emptyTitle="No event tickets purchased yet"
-          emptyStateSubtext="No worries - plenty of exciting events to explore!"
-          collectionType="My_Tickets"
-          limit={3}
-          page={ordersPage}
-          urlParamName="ordersPage"
-          totalPages={orders?.totalPages}
-        />
+        <Suspense fallback={<EventsSkeleton />}>
+          <Collection
+            data={orderedEvents}
+            emptyTitle="No tickets purchased yet"
+            emptyStateSubtext="Explore events and book your tickets now"
+            collectionType="My_Tickets"
+            limit={3}
+            page={ordersPage}
+            urlParamName="ordersPage"
+            totalPages={orders?.totalPages}
+          />
+        </Suspense>
       </section>
 
       {/* Events Organized */}
@@ -68,16 +71,18 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-8">
-        <Collection
-          data={organizedEvents?.data}
-          emptyTitle="No events have been created yet"
-          emptyStateSubtext="Go create some now"
-          collectionType="Events_Organized"
-          limit={3}
-          page={eventsPage}
-          urlParamName="eventsPage"
-          totalPages={organizedEvents?.totalPages}
-        />
+        <Suspense fallback={<EventsSkeleton />}>
+          <Collection
+            data={organizedEvents?.data}
+            emptyTitle="No events have been created yet"
+            emptyStateSubtext="Go create some now"
+            collectionType="Events_Organized"
+            limit={3}
+            page={eventsPage}
+            urlParamName="eventsPage"
+            totalPages={organizedEvents?.totalPages}
+          />
+        </Suspense>
       </section>
     </>
   );

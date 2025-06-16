@@ -27,16 +27,3 @@ export const progress = {
   },
   isLoading: () => isLoading,
 };
-
-// Auto-intercept fetch for API calls
-const originalFetch = window.fetch;
-window.fetch = async (...args) => {
-  progress.start();
-  try {
-    const response = await originalFetch(...args);
-    return response;
-  } finally {
-    // Small delay to show progress for very fast requests
-    setTimeout(() => progress.finish(), 100);
-  }
-};
