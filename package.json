@@ -26,6 +26,7 @@
     "mongodb": "^6.15.0",
     "mongoose": "^8.12.1",
     "next": "15.2.3",
+    "nprogress": "^0.2.0",
     "query-string": "^9.1.1",
     "react": "^19.0.0",
     "react-datepicker": "^8.2.1",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
