@@ -7,33 +7,40 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="w-full border-b">
-      <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
-          <Image
-            src="/assets/images/logo.svg"
-            width={128}
-            height={38}
-            alt="Evenity logo"
-          />
-        </Link>
+    <header className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg">
+      <div className="container mx-auto px-4">
+        <div className="wrapper flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="w-36">
+              <Image
+                src="/assets/images/logo.png"
+                width={128}
+                height={38}
+                alt="Evenity logo"
+              />
+            </Link>
+          </div>
 
-        <SignedIn>
-          <nav className="md:flex-between hidden w-full max-w-xs">
+          <nav className="hidden md:block">
             <NavItems />
           </nav>
-        </SignedIn>
 
-        <div className="flex w-32 justify-end gap-3">
-          <SignedIn>
-            <UserButton />
-            <MobileNav />
-          </SignedIn>
-          <SignedOut>
-            <Button asChild className="rounded-full" size="lg">
-              <Link href="/sign-in">Login</Link>
-            </Button>
-          </SignedOut>
+          <div className="flex items-center space-x-4">
+            <SignedIn>
+              <UserButton />
+              <MobileNav />
+            </SignedIn>
+            <SignedOut>
+              <Button
+                asChild
+                className="bg-white text-purple-700 rounded-lg hover:bg-purple-100 transition font-medium"
+                size="lg"
+              >
+                <Link href="/sign-in">Login</Link>
+              </Button>
+              <MobileNav />
+            </SignedOut>
+          </div>
         </div>
       </div>
     </header>
