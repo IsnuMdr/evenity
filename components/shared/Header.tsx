@@ -7,7 +7,7 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-indigo-800 to-purple-700 text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="wrapper flex items-center justify-between h-16">
           <div className="flex items-center">

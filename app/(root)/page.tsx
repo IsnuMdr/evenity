@@ -1,5 +1,6 @@
 import Collection from "@/components/shared/Collection";
 import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
+import Newsletter from "@/components/shared/Newsletter";
 import Search from "@/components/shared/Search";
 import { getAllCategoriesWithEventCounts } from "@/lib/actions/category.actions";
 import { getAllEvents } from "@/lib/actions/event.actions";
@@ -76,6 +77,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           />
         </Suspense>
       </section>
+
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-2 text-gray-800">
@@ -145,6 +147,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
           )}
         </div>
       </section>
+
+      <Newsletter />
     </>
   );
 }
