@@ -8,6 +8,12 @@ import { DeleteConfirmation } from "./DeleteConfirmation";
 import { connectToDatabase } from "@/lib/database";
 import User from "@/lib/database/models/user.model";
 import { Button } from "../ui/button";
+import {
+  CalendarIcon,
+  ChevronRightIcon,
+  ImageIcon,
+  MapPinIcon,
+} from "lucide-react";
 
 type CardProps = {
   event: IEvent;
@@ -55,20 +61,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
           </Link>
         ) : (
           <div className="h-48 bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-20 w-20 text-white opacity-80"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
-              ></path>
-            </svg>
+            <ImageIcon className="h-16 w-16 text-white" />
           </div>
         )}
         <span className="absolute top-4 right-4 bg-purple-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
@@ -78,43 +71,11 @@ const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2 text-gray-800">{event.title}</h3>
         <div className="flex items-center mb-4 text-gray-600">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mr-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            ></path>
-          </svg>
+          <CalendarIcon className="h-5 w-5 mr-1" />
           <span>{formatDateTime(event.startDateTime).dateTime}</span>
         </div>
         <div className="flex items-center mb-4 text-gray-600">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mr-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            ></path>
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            ></path>
-          </svg>
+          <MapPinIcon className="h-5 w-5 mr-1" />
           <span>{event.location}</span>
         </div>
         <p className="text-gray-600 mb-2">
@@ -150,20 +111,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
           <Link href={`/events/${event._id}`}>
             <Button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
               Go to Detail
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                ></path>
-              </svg>
+              <ChevronRightIcon className="h-5 w-5 ml-2" />
             </Button>
           </Link>
         </div>
