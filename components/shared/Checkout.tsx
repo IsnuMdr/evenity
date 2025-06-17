@@ -5,6 +5,7 @@ import { IEvent } from "@/lib/database/models/event.model";
 import { Button } from "../ui/button";
 import { checkoutOrder } from "@/lib/actions/order.actions";
 import { CheckoutOrderParams } from "@/types";
+import { TicketIcon } from "lucide-react";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -37,7 +38,12 @@ const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
 
   return (
     <form action={onCheckout} method="post">
-      <Button type="submit" role="link" size="lg" className="button sm:w-fit">
+      <Button
+        type="submit"
+        role="link"
+        className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition flex items-center justify-center"
+      >
+        <TicketIcon className="h-5 w-5 mr-2" />
         {event.isFree ? "Get Ticket" : "Buy Ticket"}
       </Button>
     </form>

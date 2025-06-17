@@ -44,13 +44,15 @@ const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
           </div>
         )}
         {event.imageUrl ? (
-          <Image
-            src={event.imageUrl}
-            alt={event.title}
-            width={500}
-            height={300}
-            className="w-full h-48 object-cover"
-          />
+          <Link href={`/events/${event._id}`}>
+            <Image
+              src={event.imageUrl}
+              alt={event.title}
+              width={500}
+              height={300}
+              className="w-full h-48 object-cover"
+            />
+          </Link>
         ) : (
           <div className="h-48 bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
             <svg
