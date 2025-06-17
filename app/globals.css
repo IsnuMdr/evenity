@@ -119,6 +119,17 @@
 
 body {
   font-family: var(--font-poppins);
+  background-color: #f8f9fa;
+}
+.event-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.ticket-modal {
+  transition: opacity 0.3s ease;
 }
 
 .filter-grey {
