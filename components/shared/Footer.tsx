@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/create"
+                  href="/events/create"
                   className="text-gray-400 hover:text-white transition"
                 >
                   Create Event

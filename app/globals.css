@@ -137,6 +137,18 @@ body {
     hue-rotate(32deg) brightness(98%) contrast(92%);
 }
 
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: #9061f9;
+  box-shadow: 0 0 0 3px rgba(144, 97, 249, 0.2);
+}
+
+.form-checkbox:checked {
+  background-color: #9061f9;
+  border-color: #9061f9;
+}
+
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
