@@ -30,3 +30,31 @@ export const getAllCategories = async () => {
     handleError(error);
   }
 };
+
+export const getAllCategoriesWithEventCounts = async () => {
+  try {
+    await connectToDatabase();
+
+    const categoriesWithEventCounts = await Category.aggregate([
+      {
+        $lookup: {
+          from: "events", // MongoDB collection name for events
+          localField: "_id",
+          foreignField: "category",
+          as: "events",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          name: 1,
+          eventCount: { $size: "$events" },
+        },
+      },
+    ]);
+
+    return JSON.parse(JSON.stringify(categoriesWithEventCounts));
+  } catch (error) {
+    handleError(error);
+  }
+};

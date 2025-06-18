@@ -17,8 +17,10 @@ const NavItems = () => {
           <li
             key={link.route}
             className={`${
-              isActive && "text-primary-500"
-            } flex-center p-medium-16 whitespace-nowrap`}
+              isActive
+                ? "text-white font-bold"
+                : "text-white opacity-70 font-medium"
+            } flex-center whitespace-nowrap hover:text-white hover:font-bold transition`}
           >
             <Link href={link.route}>{link.label}</Link>
           </li>

@@ -119,11 +119,34 @@
 
 body {
   font-family: var(--font-poppins);
+  background-color: #f8f9fa;
+}
+.event-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.ticket-modal {
+  transition: opacity 0.3s ease;
 }
 
 .filter-grey {
   filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%)
     hue-rotate(32deg) brightness(98%) contrast(92%);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: #9061f9;
+  box-shadow: 0 0 0 3px rgba(144, 97, 249, 0.2);
+}
+
+.form-checkbox:checked {
+  background-color: #9061f9;
+  border-color: #9061f9;
 }
 
 /* ========================================== TAILWIND STYLES */

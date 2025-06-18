@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import Checkout from "./Checkout";
+import { TicketIcon } from "lucide-react";
 
 const CheckoutButton = ({ event }: { event: IEvent }) => {
   const { user } = useUser();
@@ -13,25 +14,18 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
   const hasEventFinished = new Date(event.endDateTime) < new Date();
 
   return (
-    <div className="flex items-center gap-3">
-      {hasEventFinished ? (
-        <p className="p-2 text-red-400">
-          Sorry, tickets are no longer available.
-        </p>
-      ) : (
-        <>
-          <SignedOut>
-            <Button asChild className="button rounded-full" size="lg">
-              <Link href="/sign-in">Get Tickets</Link>
-            </Button>
-          </SignedOut>
+    <>
+      <SignedOut>
+        <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition flex items-center justify-center">
+          <TicketIcon className="h-5 w-5 mr-2" />
+          <Link href="/sign-in">Get Ticket</Link>
+        </Button>
+      </SignedOut>
 
-          <SignedIn>
-            <Checkout event={event} userId={userId} />
-          </SignedIn>
-        </>
-      )}
-    </div>
+      <SignedIn>
+        <Checkout event={event} userId={userId} />
+      </SignedIn>
+    </>
   );
 };
 

@@ -53,7 +53,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
-      <SelectTrigger className="select-field">
+      <SelectTrigger className="form-select w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none  focus:outline-purple-500">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
@@ -68,7 +68,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
             </SelectItem>
           ))}
 
-        <AlertDialog>
+        {/* <AlertDialog>
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
             Add new category
           </AlertDialogTrigger>
@@ -93,7 +93,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
-        </AlertDialog>
+        </AlertDialog> */}
       </SelectContent>
     </Select>
   );
