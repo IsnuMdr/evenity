@@ -61,7 +61,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             Featured Events
           </h2>
           <p className="text-gray-600 mb-8">
-            Don't miss out on these popular events
+            Don&lsquo;t miss out on these popular events
           </p>
         </div>
 
