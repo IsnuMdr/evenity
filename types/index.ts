@@ -131,6 +131,15 @@ export type GetOrdersByUserParams = {
   page: string | number | null;
 };
 
+// ====== TICKET PARAMS
+export type CreateTicketParams = {
+  orderId: string;
+  eventId: string;
+  buyerId: string;
+  ticketType?: string;
+  isUsed?: boolean;
+};
+
 // ====== URL QUERY PARAMS
 export type UrlQueryParams = {
   params: string;

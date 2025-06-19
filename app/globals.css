@@ -149,6 +149,65 @@ body {
   border-color: #9061f9;
 }
 
+/* Ticket */
+.ticket {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.ticket:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.ticket:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  height: 100%;
+  width: 20px;
+  background-image: radial-gradient(
+    circle at 10px 10px,
+    transparent 12px,
+    white 12px
+  );
+  background-size: 20px 20px;
+  background-position: 0 9px;
+  background-repeat: repeat-y;
+}
+.ticket:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  height: 100%;
+  width: 20px;
+  background-image: radial-gradient(
+    circle at 10px 10px,
+    transparent 12px,
+    white 12px
+  );
+  background-size: 20px 20px;
+  background-position: 0 9px;
+  background-repeat: repeat-y;
+}
+.tab-active {
+  color: #6d28d9;
+  border-bottom: 2px solid #6d28d9;
+}
+.ticket-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+@media (max-width: 640px) {
+  .ticket:before,
+  .ticket:after {
+    display: none;
+  }
+}
+
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
