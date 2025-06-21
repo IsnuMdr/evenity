@@ -1,19 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getOrdersByUser } from "@/lib/actions/order.actions";
-import {
-  CalendarIcon,
-  DownloadIcon,
-  ImageIcon,
-  MapPinIcon,
-  PlusIcon,
-  TicketIcon,
-} from "lucide-react";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { CalendarIcon, MapPinIcon, PlusIcon, TicketIcon } from "lucide-react";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { connectToDatabase } from "@/lib/database";
 import User from "@/lib/database/models/user.model";
-import { IOrder } from "@/lib/database/models/order.model";
-import { IEvent } from "@/lib/database/models/event.model";
 import Image from "next/image";
 import { formatDateTime, formatPrice } from "@/lib/utils";
 import { getTicketsByUser } from "@/lib/actions/ticket.actions";
@@ -21,7 +11,8 @@ import { ITicket } from "@/lib/database/models/ticket.model";
 import {
   TicketModalOverlay,
   TicketTrigger,
-} from "@/components/shared/TicketModal";
+} from "@/components/shared/tickets/TicketModal";
+import TicketDownloadButton from "@/components/shared/tickets/TicketDownloadButton";
 
 const MyTicketsPage = async ({
   searchParams,
@@ -34,10 +25,14 @@ const MyTicketsPage = async ({
   await connectToDatabase();
   const user = await User.findOne({ clerkId: userId });
 
-  const myTickets: any[] = (await getTicketsByUser(user._id.toString())) || [];
+  const myTickets: { data: ITicket[]; totalPages: number } =
+    (await getTicketsByUser({
+      userId: user._id.toString(),
+      page: 1,
+    })) || { data: [], totalPages: 0 };
 
   const ticketData = ticketId
-    ? myTickets.find((t) => t._id === ticketId)
+    ? myTickets.data.find((t) => t._id === ticketId)
     : null;
 
   const showModal = ticketData ? !!ticketData._id : false;
@@ -79,15 +74,15 @@ const MyTicketsPage = async ({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="Upcoming" className="space-y-6 mt-6">
-          {myTickets?.length > 0 ? (
-            myTickets?.map((ticket: any) => (
+          {myTickets?.data?.length > 0 ? (
+            myTickets?.data?.map((ticket: ITicket) => (
               <div
                 key={ticket._id}
                 className="ticket bg-white rounded-xl overflow-hidden shadow-md p-6 mx-4 md:mx-10"
               >
-                <span className="ticket-badge bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                {/* <span className="ticket-badge bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                   Upcoming
-                </span>
+                </span> */}
                 <div className="flex flex-col md:flex-row">
                   {/* Event Image */}
                   <div className="w-full md:w-1/4 mb-4 md:mb-0">
@@ -159,11 +154,7 @@ const MyTicketsPage = async ({
                           triggerText="View Ticket"
                           className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg transition flex items-center"
                         />
-
-                        <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-                          <DownloadIcon className="h-5 w-5 mr-2" />
-                          Download
-                        </button>
+                        <TicketDownloadButton ticket={ticket} />
                       </div>
                     </div>
                   </div>

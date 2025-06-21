@@ -4,10 +4,10 @@ import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { DeleteConfirmation } from "./DeleteConfirmation";
+import { DeleteConfirmation } from "../common/DeleteConfirmation";
 import { connectToDatabase } from "@/lib/database";
 import User from "@/lib/database/models/user.model";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
   CalendarIcon,
   ChevronRightIcon,

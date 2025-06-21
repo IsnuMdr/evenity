@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { eventFormSchema } from "@/lib/validator";
 import * as z from "zod";
 import { eventDefaultValues } from "@/constants";
-import Dropdown from "./Dropdown";
+import Dropdown from "../common/Dropdown";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import Image from "next/image";
@@ -22,12 +22,12 @@ import DatePicker from "react-datepicker";
 import { useUploadThing } from "@/lib/uploadthing";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "../../ui/checkbox";
 import { useRouter } from "next/navigation";
 import { IEvent } from "@/lib/database/models/event.model";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
-import { FileUploader } from "./FileUploader";
-import { Label } from "../ui/label";
+import { FileUploader } from "../common/FileUploader";
+import { Label } from "../../ui/label";
 import { CalendarIcon, DollarSignIcon } from "lucide-react";
 
 type EventFormProps = {

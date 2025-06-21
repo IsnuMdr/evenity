@@ -1,4 +1,4 @@
-import EventForm from "@/components/shared/EventForm";
+import EventForm from "@/components/shared/events/EventForm";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";

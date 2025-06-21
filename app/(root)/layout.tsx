@@ -1,5 +1,5 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/layouts/Footer";
+import Header from "@/components/shared/layouts/Header";
 import RouterEvents from "@/event/RouterEvent";
 import ProgressProvider from "@/providers/ProgressProvider";
 import { Suspense } from "react";

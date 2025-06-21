@@ -1,10 +1,11 @@
 import { Schema, model, models, Document } from "mongoose";
 
 export interface ITicket extends Document {
+  _id: string;
   createdAt: Date;
   isUsed?: boolean;
   ticketType?: string;
-  buyer?: {
+  buyer: {
     _id: string;
     firstName: string;
     lastName: string;
@@ -17,8 +18,8 @@ export interface ITicket extends Document {
     endDateTime: Date;
     location: string;
     isFree: boolean;
-    price?: string;
-    category?: {
+    price: string;
+    category: {
       _id: string;
       name: string;
     };

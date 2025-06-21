@@ -1,4 +1,4 @@
-import EventForm from "@/components/shared/EventForm";
+import EventForm from "@/components/shared/events/EventForm";
 import { getEventById } from "@/lib/actions/event.actions";
 import { connectToDatabase } from "@/lib/database";
 import User from "@/lib/database/models/user.model";

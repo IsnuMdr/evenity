@@ -140,6 +140,12 @@ export type CreateTicketParams = {
   isUsed?: boolean;
 };
 
+export type GetTicketsByUserParams = {
+  userId: string | null;
+  limit?: number;
+  page: number;
+};
+
 // ====== URL QUERY PARAMS
 export type UrlQueryParams = {
   params: string;

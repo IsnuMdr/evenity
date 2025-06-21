@@ -1,5 +1,5 @@
-import Collection from "@/components/shared/Collection";
-import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
+import Collection from "@/components/shared/events/Collection";
+import { EventsSkeleton } from "@/components/shared/events/EventsSkeleton";
 import { Button } from "@/components/ui/button";
 import { getEventsByUser } from "@/lib/actions/event.actions";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
@@ -32,9 +32,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
     userId: user._id.toString(),
     page: eventsPage,
   });
-
-  console.log(orders);
-  console.log(orderedEvents);
 
   return (
     <>

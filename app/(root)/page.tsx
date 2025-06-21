@@ -1,7 +1,7 @@
-import Collection from "@/components/shared/Collection";
-import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
-import Newsletter from "@/components/shared/Newsletter";
-import Search from "@/components/shared/Search";
+import Collection from "@/components/shared/events/Collection";
+import { EventsSkeleton } from "@/components/shared/events/EventsSkeleton";
+import Newsletter from "@/components/shared/layouts/Newsletter";
+import Search from "@/components/shared/common/Search";
 import { getAllCategoriesWithEventCounts } from "@/lib/actions/category.actions";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import { ICategory } from "@/lib/database/models/category.model";

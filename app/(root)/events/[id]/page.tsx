@@ -1,6 +1,6 @@
-import CheckoutButton from "@/components/shared/CheckoutButton";
-import Collection from "@/components/shared/Collection";
-import { EventsSkeleton } from "@/components/shared/EventsSkeleton";
+import CheckoutButton from "@/components/shared/common/CheckoutButton";
+import Collection from "@/components/shared/events/Collection";
+import { EventsSkeleton } from "@/components/shared/events/EventsSkeleton";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
