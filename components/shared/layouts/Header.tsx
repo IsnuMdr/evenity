@@ -36,7 +36,7 @@ const Header = async () => {
 
           <div className="flex items-center space-x-4">
             <SignedIn>
-              <div className="text-white font-medium">{user.firstName}</div>
+              <div className="text-white font-medium">{user?.firstName}</div>
               <CustomUserDropdown />
               <MobileNav />
             </SignedIn>
