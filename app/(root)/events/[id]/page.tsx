@@ -19,11 +19,14 @@ import {
   ExternalLinkIcon,
   MapPinIcon,
   Share2Icon,
-  TicketIcon,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+const MapBox = dynamic(() => import("@/components/shared/common/LeafletMap"), {
+  ssr: true,
+});
 
 const EventDetails = async ({ params, searchParams }: SearchParamProps) => {
   const { id } = await params;
@@ -362,7 +365,7 @@ const EventDetails = async ({ params, searchParams }: SearchParamProps) => {
                 </h2>
                 <div className="bg-gray-200 rounded-lg overflow-hidden h-48 mb-4">
                   <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                    <MapPinIcon className="h-12 w-12 text-gray-500" />
+                    <MapBox address={event.location?.toString() || ""} />
                   </div>
                 </div>
                 <div id="venue-address" className="text-gray-600 text-sm">
