@@ -15,9 +15,9 @@ export const headerLinks = [
     isAuth: true,
   },
   {
-    label: "My Profile",
-    route: "/profile",
-    isAuth: true,
+    label: "About",
+    route: "/about",
+    isAuth: false,
   },
 ];
 
