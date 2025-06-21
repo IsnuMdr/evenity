@@ -170,7 +170,7 @@ const MyTicketsPage = async ({
                 No tickets found
               </h3>
               <p className="text-gray-600 mb-6">
-                You don't have any tickets in this category yet.
+                You don&lsquo;t have any tickets in this category yet.
               </p>
               <Link
                 href="/"
@@ -191,7 +191,7 @@ const MyTicketsPage = async ({
               No tickets found
             </h3>
             <p className="text-gray-600 mb-6">
-              You don't have any tickets in this category yet.
+              You don&lsquo;t have any tickets in this category yet.
             </p>
             <Link
               href="/"

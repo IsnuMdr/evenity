@@ -70,8 +70,8 @@ const AboutPage = () => {
                   reach their perfect audience.
                 </p>
                 <p className="text-gray-600 text-lg">
-                  Whether it's a local workshop, a major concert, or a
-                  professional conference, we're passionate about bringing
+                  Whether it&lsquo;s a local workshop, a major concert, or a
+                  professional conference, we&lsquo;re passionate about bringing
                   people together in meaningful ways.
                 </p>
               </div>
@@ -167,7 +167,7 @@ const AboutPage = () => {
                   Innovation
                 </h3>
                 <p className="text-gray-600">
-                  We're constantly exploring new ways to improve the event
+                  We&lsquo;re constantly exploring new ways to improve the event
                   experience, from discovery to attendance, for both creators
                   and attendees.
                 </p>
@@ -201,8 +201,8 @@ const AboutPage = () => {
                   Trust &amp; Safety
                 </h3>
                 <p className="text-gray-600">
-                  We're committed to creating a trusted platform where users can
-                  discover events with confidence and peace of mind.
+                  We&lsquo;re committed to creating a trusted platform where
+                  users can discover events with confidence and peace of mind.
                 </p>
               </div>
             </div>
@@ -234,8 +234,9 @@ const AboutPage = () => {
                   Passion
                 </h3>
                 <p className="text-gray-600">
-                  We're passionate about events and experiences. This passion
-                  drives us to continuously improve and innovate our platform.
+                  We&lsquo;re passionate about events and experiences. This
+                  passion drives us to continuously improve and innovate our
+                  platform.
                 </p>
               </div>
             </div>
