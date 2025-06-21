@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎟️ Evenity – Event Management Web App
 
-## Getting Started
+**Evenity** is a modern, fullstack event management platform where users can explore, create, and attend public events. With a sleek UI and intuitive UX, Evenity makes organizing and discovering events seamless.
 
-First, run the development server:
+> Built as a solo project to sharpen my fullstack development skills.
+
+![Evenity Screenshot](public/preview.png) <!-- Replace with actual image path if hosted -->
+
+---
+
+## 🚀 Live Demo
+
+🌐 [https://evenity-nine.vercel.app](https://evenity-nine.vercel.app)
+
+---
+
+## ✨ Features
+
+- ✅ Public event creation
+- 🎫 Ticket purchasing via **Stripe**
+- 📅 View event details and listings
+- 🧾 View purchased tickets (QR Code)
+- 🧑‍💼 User authentication & profile settings
+- 📷 Image uploads for event cover via **Uploadthing**
+- 🧪 Modern UI with responsive design
+- 🔐 Clerk integration for auth/session handling
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend                | Backend            | Auth         | Payments | Styling                    |
+| ----------------------- | ------------------ | ------------ | -------- | -------------------------- |
+| Next.js 15 (App Router) | MongoDB + Mongoose | Clerk        | Stripe   | TailwindCSS + shadcn/ui    |
+| React 19                | Server Actions     | JWT Sessions | Webhooks | Uploadthing (File uploads) |
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+├── app/                 # Next.js App Router structure
+│   ├── (auth)/          # Auth pages
+│   │    ├── sign-in
+│   │    └── sign-up
+│   ├── (root)/          # Root pages
+│   │    ├── about
+│   │    ├── events
+│   │    ├── orders
+│   │    ├── profile
+│   │    └── tickets
+│   ├── (api)/           # API routes
+│   │    ├── uploadthing
+│   │    └── stripe
+├── components/          # Reusable UI components
+├── lib/                 # Server utilities, Stripe, DB
+│     ├── actions/       # Mongoose actions
+│     └── database/
+│          └── models/   # Monggose models
+├── types/               # Define type
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📈 Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Coming soon:
 
-## Learn More
+🗓️ Add schedule and speakers per event
+🌟 Featured event section on homepage
+🎟️ Multi-ticket types and quantity management
+📊 Admin dashboard (organizer view)
+🔔 Email reminders (SendGrid integration)
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- Add real images in your repo or use GitHub issue image links -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Installation
 
-## Deploy on Vercel
+```bash
+git clone https://github.com/IsnuMdr/evenity.git
+cd evenity
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Install dependencies
+npm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Set up environment variables
+cp .env.example .env
+
+# Run locally
+npm run dev
+```
+
+## 🔐 Environment Variables
+
+Create a .env file using .env.example as a reference. You'll need:
+
+```bash
+NEXT_PUBLIC_SERVER_URL=
+
+#CLERK
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_CLERK_WEBHOOK_SECRET=
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
+
+#MONGODB
+MONGODB_URI=
+
+#UPLOADTHING
+UPLOADTHING_TOKEN=
+
+#STRIPE
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+```
+
+## 📄 License
+
+This project is open source
