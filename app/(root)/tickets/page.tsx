@@ -12,7 +12,7 @@ import {
   TicketModalOverlay,
   TicketTrigger,
 } from "@/components/shared/tickets/TicketModal";
-import TicketDownloadButton from "@/components/shared/Tickets/TicketDownloadButton";
+import TicketDownloadButton from "@/components/shared/tickets/TicketDownloadButton";
 
 const MyTicketsPage = async ({
   searchParams,
